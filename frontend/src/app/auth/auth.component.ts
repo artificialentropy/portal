@@ -14,15 +14,7 @@ export class AuthComponent implements OnInit {
   public timeleft: any;
   constructor(public authService: AuthService,private router: Router) { }
   isLoginMode = true;
-  ngOnInit() {
-    var date1 = this.authService.token_expires;
-    var date2 = new Date();
-    var timeleft = (date2. getTime() - date1. getTime())*1000;
-    console.log(timeleft)
-    if (timeleft < 10) {
-      this.authService.refreshAPIToken();
-    }
-  }
+  ngOnInit() {}
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }

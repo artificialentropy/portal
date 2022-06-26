@@ -10,7 +10,7 @@ export class CompanyService {
 
   constructor() {}
 
-  private companies: Company[] = [];
+  public companies: Company[] = [];
 
   setCompanies(companies: Company[]) {
     this.companies = companies;

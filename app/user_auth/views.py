@@ -12,6 +12,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from django.contrib.auth import get_user_model
 
 class ChangePasswordView(generics.UpdateAPIView):
@@ -46,6 +47,17 @@ class ChangePasswordView(generics.UpdateAPIView):
 
                 return Response(response)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ManageUserView(generics.RetrieveUpdateAPIView):
+    """Manage the authenticated user"""
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        """Retrieve and return authentication user"""
+        return self.request.user
+
+
 
 class CreateUserView(generics.CreateAPIView):
     """Create a new user in the system"""

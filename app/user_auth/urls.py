@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import (
 from user_auth import views
 
 
-app_name = 'users'
+app_name = 'user_auth'
 
 urlpatterns = [
     
@@ -13,5 +13,6 @@ urlpatterns = [
     path('token/', views.MyTokenObtainPairView.as_view(), name='token'),
     path('refresh/', TokenRefreshView.as_view(), name='refresh'),
     path('verify/', TokenVerifyView.as_view(), name='verify'),
-    path('change-password/', views.ChangePasswordView.as_view(), name='password'),  
+    path('change-password/', views.ChangePasswordView.as_view(), name='password'),
+    path('me/', views.ManageUserView.as_view(), name='me'),  
 ]

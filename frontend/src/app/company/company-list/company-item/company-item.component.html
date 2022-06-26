@@ -3,8 +3,10 @@
   [routerLink]="[index]"
   routerLinkActive="active"
   class="list-group-item clearfix">
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ company.name }}</h4>
-    <p class="list-group-item-text">{{ company.link }}</p>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h4 class="list-group-item-heading">{{ company.name }}</h4>
+      <p class="list-group-item-text">{{ company.description }}</p>
+    </div>
   </div>
 </a>

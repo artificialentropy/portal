@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStorageService } from './shared/data-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
-
-  ngOnInit() {}
+  constructor(private ds: DataStorageService) {}
+  ngOnInit() {
+    this.ds.fetchProfile();
+  }
 }

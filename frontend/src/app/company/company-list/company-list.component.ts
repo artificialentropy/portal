@@ -12,9 +12,7 @@ import { CompanyService } from '../company.service';
 export class CompanyListComponent implements OnInit {
   companies: Company[] = [];
   subscription!: Subscription;
-  constructor(private companyService: CompanyService,
-              private router: Router) {
-  }
+  constructor(private companyService: CompanyService) {}
 
   ngOnInit() {
     this.subscription = this.companyService.companiesChanged
@@ -24,7 +22,6 @@ export class CompanyListComponent implements OnInit {
         }
       );
     this.companies = this.companyService.getCompanies();
-    console.log(this.companies);
   }
 
 }

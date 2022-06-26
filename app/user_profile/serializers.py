@@ -13,8 +13,8 @@ class ProfilePublicSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ("id","first_name","last_name","city","avatar")
-        read_only_fields = ("id","first_name","last_name","city","avatar")
+        fields = ("id","user","first_name","last_name","city","avatar")
+        read_only_fields = ("id","user","first_name","last_name","city","avatar")
 
 class ProfileUpdateSerialier(serializers.ModelSerializer):
 

@@ -14,17 +14,13 @@ export class HeaderComponent {
 
 
   constructor(
-    private authService: AuthService,
-    private dataStorageService: DataStorageService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
     });
-  }
-  onFetchCompanyData() {
-    this.dataStorageService.fetchCompanies().subscribe();
   }
 
   onLogout() {

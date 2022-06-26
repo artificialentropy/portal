@@ -9,21 +9,25 @@ import { CompanyService } from './company/company.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { CommonModule } from '@angular/common';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { ProfileService } from './profile/profile.service';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService,
     CompanyService,
+    ProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

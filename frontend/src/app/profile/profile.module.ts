@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -14,6 +15,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
   imports: [
     RouterModule,
     ReactiveFormsModule,
+    CommonModule,
     ProfileRoutingModule
   ],
 })
