@@ -87,7 +87,7 @@ export class AuthEffects {
     switchMap((authData: AuthActions.LoginStart) => {
       return this.http
         .post<AuthResponseData>(
-          'http://localhost:8000/auth/token',
+          'http://localhost:8000/auth/token/',
           {
             email: authData.payload.email,
             password: authData.payload.password,

@@ -1,1 +1,2 @@
 (1)	Make state same as recipe project with api using normal token
+(2)	Implement survival of page on refresh

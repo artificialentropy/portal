@@ -1,19 +1,19 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a routerLink="/" class="navbar-brand">Recipe Book</a>
+      <a routerLink="/" class="navbar-brand">Job Book</a>
     </div>
 
-    <div class="collapse navbar-collapse">
+    <div class="navbar-default">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a routerLink="/recipes">Recipes</a>
+          <a outerLink="/company">Company</a>
         </li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
           <a routerLink="/auth">Authenticate</a>
         </li>
-        <li routerLinkActive="active">
-          <a routerLink="/shopping-list">Shopping List</a>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a>Jobs</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

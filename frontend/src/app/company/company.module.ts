@@ -34,10 +34,12 @@ import { CompanyRoutingModule } from './company-routing.module';
     CompanyStartComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     RouterModule,
     CompanyRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,

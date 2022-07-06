@@ -25,11 +25,10 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from './core.module';
 
 @NgModule({
-    declarations: [
-        AppComponent,HeaderComponent
-    ],
+    declarations: [AppComponent,HeaderComponent],
     imports: [
         BrowserModule,
         FormsModule,
@@ -45,21 +44,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatListModule,
         MatToolbarModule,
         SharedModule,
-        StoreModule.forRoot(fromApp.appReducer, {
-            // runtimeChecks : {
-            //     strictStateImmutability: true,
-            //     strictActionImmutability: true,
-            //     strictActionSerializability: true,
-            //     strictStateSerializability:true
-            // }
-        }),
+        StoreModule.forRoot(fromApp.appReducer),
         StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
         EffectsModule.forRoot([AuthEffects, CompanyEffects]),
         EntityDataModule.forRoot({}),
         StoreRouterConnectingModule.forRoot({
             stateKey: 'router',
             routerState: RouterState.Minimal
-        })
+        }),
+        SharedModule,
+        CoreModule
     ],
     bootstrap: [AppComponent]
 })
