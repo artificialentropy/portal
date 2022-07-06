@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../shared/data-storage.service';
-import { CompanyService } from './company.service';
 
 @Component({
   selector: 'app-company',
@@ -9,13 +7,10 @@ import { CompanyService } from './company.service';
 })
 export class CompanyComponent implements OnInit {
 
-  constructor(private ds: DataStorageService) { }
+  constructor() { }
 
   ngOnInit() {
-    if (this.ds.firstLoad) {
-      this.ds.fetchCompanies().subscribe();
-      this.ds.firstLoad = false;
-    }
+
   }
 
 }

@@ -1,39 +1,67 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
+import * as fromApp from './reducers/index';
+import {EffectsModule} from '@ngrx/effects';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {EntityDataModule} from '@ngrx/data';
+import { CompanyEffects } from './company/store/company.effects';
+import { AuthEffects } from './auth/auth.effects';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthService } from './auth/auth.service';
-import { CompanyService } from './company/company.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { CommonModule } from '@angular/common';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { ProfileService } from './profile/profile.service';
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LoadingSpinnerComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [
-    AuthService,
-    CompanyService,
-    ProfileService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,HeaderComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        MatMenuModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatProgressSpinnerModule,
+        MatListModule,
+        MatToolbarModule,
+        SharedModule,
+        StoreModule.forRoot(fromApp.appReducer, {
+            // runtimeChecks : {
+            //     strictStateImmutability: true,
+            //     strictActionImmutability: true,
+            //     strictActionSerializability: true,
+            //     strictStateSerializability:true
+            // }
+        }),
+        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+        EffectsModule.forRoot([AuthEffects, CompanyEffects]),
+        EntityDataModule.forRoot({}),
+        StoreRouterConnectingModule.forRoot({
+            stateKey: 'router',
+            routerState: RouterState.Minimal
+        })
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

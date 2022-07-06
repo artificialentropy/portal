@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "D:\\Course_Unreal_Automation",
+        "./app/app"
+    ]
+}
