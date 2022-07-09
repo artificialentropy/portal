@@ -8,10 +8,10 @@ import { Company } from '../../model/company.model';
   styleUrls: ['./company-item.component.css']
 })
 export class CompanyItemComponent implements OnInit {
-
+  @Input() company: Company;
+  @Input() index: number;
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

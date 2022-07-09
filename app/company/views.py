@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from core.models import Company, Job, Recruiter, JobApplication
 from . import serializers
 from rest_framework.generics import ListAPIView,RetrieveAPIView
 # Create your views here.
+
 class CompanyViewSet(viewsets.ModelViewSet):
     """Manage recipes in the database"""
     serializer_class = serializers.CompanySerializer
     queryset = Company.objects.all()
-    permission_classes = (IsAuthenticated,)
 
 class JobViewSet(viewsets.ModelViewSet):
     """Manage recipes in the database"""
@@ -30,7 +31,6 @@ class JobApplicationView(ListAPIView):
 
 class RecruiterPublicListView(ListAPIView):
     queryset = Recruiter.objects.all()
-    permission_classes = (IsAuthenticated,)
     serializer_class = serializers.RecruiterPublicSerializer
 
 class RecruiterPrivateDetailView(RetrieveAPIView):

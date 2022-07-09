@@ -1,6 +1,11 @@
+
 <div class="row">
   <div class="col-xs-12">
-    <app-company-item>
+    <app-company-item
+      *ngFor="let company of companies ; let i = index"
+      [company]="company"
+      [index]="i">
     </app-company-item>
   </div>
 </div>
+

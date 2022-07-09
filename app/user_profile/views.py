@@ -4,6 +4,7 @@ from core.models import Profile
 from .serializers import ProfilePublicSerializer,ProfilePrivateSerializer, ProfileUpdateSerialier
 from rest_framework.generics import ListAPIView,RetrieveAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 class ProfilePublicListView(ListAPIView):
     queryset = Profile.objects.all()
@@ -14,6 +15,7 @@ class ProfilePrivateDetailView(RetrieveAPIView):
     serializer_class = ProfilePrivateSerializer
     queryset = Profile.objects.all()
     permission_classes = (IsAuthenticated,)
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
     def get_queryset(self):
         queryset = self.queryset
         query_set = queryset.filter(user=self.request.user)
@@ -24,6 +26,7 @@ class ProfilePrivateDetailView(RetrieveAPIView):
     
 class ProfileUpdateAPIView(RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
     serializer_class = ProfileUpdateSerialier
     queryset = Profile.objects.all()
     def get_queryset(self):

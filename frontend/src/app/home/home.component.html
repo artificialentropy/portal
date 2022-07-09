@@ -1,0 +1,14 @@
+<h1>New Job Portal</h1>
+<p>Welcome to search for your next best job!</p>
+
+<div *ngIf="isAuthenticated" class="row">
+  <div class="card col-xs-12">
+    <a onFetchData routerLink="/company">Budding Startups </a>
+  </div>
+</div><div *ngFor="let companyEl of companies; let i = index" class="card row">
+  <div class="col-xs-12">
+    <h2>{{ companyEl.name }}</h2>
+    <p>{{ companyEl.description }}</p>
+  </div>
+</div>
+

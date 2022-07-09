@@ -1,39 +1,24 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-custom">
+  <div class="container-fluid" id="navbarNav">
     <div class="navbar-header">
       <a routerLink="/" class="navbar-brand">Job Book</a>
     </div>
-
-    <div class="navbar-default">
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a outerLink="/company">Company</a>
-        </li>
-        <li routerLinkActive="active" *ngIf="!isAuthenticated">
-          <a routerLink="/auth">Authenticate</a>
-        </li>
-        <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a>Jobs</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="isAuthenticated">
-          <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
-        </li>
-        <li class="dropdown" appDropdown *ngIf="isAuthenticated">
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button"
-            >Manage <span class="caret"></span
-          ></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a style="cursor: pointer;" (click)="onSaveData()">Save Data</a>
-            </li>
-            <li>
-              <a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a routerLink='/home'>Home</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/company">Company</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuthenticated">
+        <a routerLink="/auth">Authenticate</a>
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+      </li>
+    </ul>
   </div>
 </nav>

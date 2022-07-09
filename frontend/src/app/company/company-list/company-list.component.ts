@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { map, pipe, Subscription } from 'rxjs';
+import { Company } from '../model/company.model';
+import * as fromApp from '../../reducers/index';
+import { FetchCompanies } from '../store/company.actions';
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyListComponent implements OnInit {
 
-  constructor() {}
+  companies: Company[] = [];
+  companySub: Subscription;
+
+  constructor(
+    private store: Store<fromApp.AppState>
+  ) {}
 
   ngOnInit() {
+    this.store.select('companies').subscribe((result) => {
+      let tempCompanies: Company[] = [];
+      result.companies.forEach(
+        (companyItem) => {
+          this.companies.push(companyItem)
+        })
+    })
+
   }
 
 }

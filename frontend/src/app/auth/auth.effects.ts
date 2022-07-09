@@ -122,47 +122,6 @@ export class AuthEffects {
     })
   );
 
-  @Effect()
-  autoLogin = this.actions$.pipe(
-    ofType(AuthActions.AUTO_LOGIN),
-    map(() => {
-      const userData: {
-        email: string;
-        id: string;
-        _token: string;
-      } = JSON.parse(localStorage.getItem('user'));
-      if (!userData) {
-        return { type: 'DUMMY' };
-      }
-
-      const loadedUser = new User(
-        userData.email,
-        userData.id,
-        userData._token
-      );
-
-      if (loadedUser.token) {
-        // this.user.next(loadedUser);
-
-        jwt_decode(loadedUser.token)
-        // const expirationDuration =
-        //   new Date(userData._tokenExpirationDate).getTime() -
-        //   new Date().getTime();
-        // this.authService.setLogoutTimer(expirationDuration);
-        return new AuthActions.AuthenticateSuccess({
-          email: loadedUser.email,
-          userId: loadedUser.id,
-          token: loadedUser.token
-        });
-
-        // const expirationDuration =
-        //   new Date(userData._tokenExpirationDate).getTime() -
-        //   new Date().getTime();
-        // this.autoLogout(expirationDuration);
-      }
-      return { type: 'DUMMY' };
-    })
-  );
 
   @Effect({ dispatch: false })
   authLogout = this.actions$.pipe(

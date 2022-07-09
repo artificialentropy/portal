@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { HomeComponent } from "./home/home.component";
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/company', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
   { path: 'company', loadChildren: () => import('./company/company.module').then(x => x.CompanyModule)},
   { path: 'auth',loadChildren: () => import('./auth/auth.module').then(x => x.AuthModule)},
 ];

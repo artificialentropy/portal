@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 import * as CompanyActions from './company.actions';
 import { Company } from '../model/company.model';
 import * as fromApp from '../../reducers/index';
+import { User } from 'src/app/auth/model/user.model';
 
 @Injectable()
 export class CompanyEffects {
+  user: User;
   @Effect()
   fetchCompanies = this.actions$.pipe(
     ofType(CompanyActions.FETCH_COMPANY),
@@ -28,18 +30,6 @@ export class CompanyEffects {
       return new CompanyActions.SetCompanies(companies);
     })
   );
-
-  // @Effect({dispatch: false})
-  // storeRecipes = this.actions$.pipe(
-  //   ofType(CompanyActions.STORE_RECIPES),
-  //   withLatestFrom(this.store.select('recipes')),
-  //   switchMap(([actionData, recipesState]) => {
-  //     return this.http.put(
-  //       'https://angularbackend-9ffc2-default-rtdb.firebaseio.com/recipes.json',
-  //       recipesState.recipes
-  //     );
-  //   })
-  // );
 
   constructor(
     private actions$: Actions,
