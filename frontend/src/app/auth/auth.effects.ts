@@ -122,6 +122,36 @@ export class AuthEffects {
     })
   );
 
+  @Effect()
+  autoLogin = this.actions$.pipe(
+    ofType(AuthActions.AUTO_LOGIN),
+    map(() => {
+      const userData: {
+        email: string;
+        id: string;
+        token: string;
+      } = JSON.parse(localStorage.getItem('user'));
+      if (!userData) {
+        return { type: 'DUMMY' };
+      }
+
+      const loadedUser = new User(
+        userData.email,
+        userData.id,
+        userData.token,
+      );
+
+      if (loadedUser.token) {
+        // this.user.next(loadedUser);
+        return new AuthActions.AuthenticateSuccess({
+          email: loadedUser.email,
+          userId: loadedUser.id,
+          token: loadedUser.token
+        });
+      }
+      return { type: 'DUMMY' };
+    })
+  );
 
   @Effect({ dispatch: false })
   authLogout = this.actions$.pipe(
