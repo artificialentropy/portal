@@ -118,7 +118,7 @@ class Job(models.Model):
     slug = models.SlugField(allow_unicode=True, unique=True)
     title = models.CharField(max_length=255, blank=False,null=False,default="Data Science")
     location = models.CharField(max_length=255, blank=False,null=False)
-    company = models.OneToOneField(Company,on_delete=models.CASCADE,related_name="job_company")
+    company = models.ForeignKey(Company,on_delete=models.CASCADE,related_name="job_company")
     recruiter = models.ForeignKey(Recruiter,on_delete=models.CASCADE,related_name="job_recruiter")
     requirement = models.TextField()
     job_description = models.TextField()

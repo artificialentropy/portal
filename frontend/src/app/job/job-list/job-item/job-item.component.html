@@ -1,1 +1,11 @@
-<p>job-item works!</p>
+<a
+  style="cursor: pointer"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="card pull-left">
+    <h4 class="list-group-item-heading">{{ job.title }}</h4>
+    <p class="list-group-item-text">{{ job.location }}</p>
+    <p class="list-group-item-text">{{ job.ctc }}</p>
+  </div>
+</a>

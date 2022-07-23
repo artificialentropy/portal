@@ -26,7 +26,6 @@ class RecruiterPublicSerializer(serializers.ModelSerializer):
         fields = (
             'id','recruiter_profile', 'recruiter_company'
         )
-
 class RecruiterPrivateSerializer(serializers.ModelSerializer):
     recruiter_profile = ProfilePrivateSerializer(many=False, read_only=True)
     recruiter_company = CompanySerializer(many=False, read_only=True)
@@ -37,8 +36,6 @@ class RecruiterPrivateSerializer(serializers.ModelSerializer):
         )
 
 class JobSerializer(serializers.ModelSerializer):
-    recruiter = RecruiterPublicSerializer(many=False, read_only=True)
-    company = CompanySerializer(many=False, read_only=True)
     class Meta:
         model = Job
         fields = '__all__'

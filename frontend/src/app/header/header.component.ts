@@ -6,11 +6,11 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../reducers/index';
 import * as AuthActions from '../auth/action-types';
 import * as CompanyActions from '../company/store/company.actions';
+import * as JobActions from '../job/store/job.actions';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
@@ -31,16 +31,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  onSaveData() {
-    // this.dataStorageService.storeRecipes();
-    this.store.dispatch(new CompanyActions.StoreCompanies());
-  }
-
-  onFetchData() {
-    // this.dataStorageService.fetchRecipes().subscribe();
+  onFetchCompanyData() {
     this.store.dispatch(new CompanyActions.FetchCompanies());
   }
-
+  onFetchJobData() {
+    this.store.dispatch(new JobActions.FetchJobs());
+  }
   onLogout() {
     this.store.dispatch(new AuthActions.AuthActions.Logout());
   }

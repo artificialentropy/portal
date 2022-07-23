@@ -15,29 +15,30 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule, Routes} from '@angular/router';
-import { CompanyComponent } from './company.component';
-import { CompanyListComponent } from './company-list/company-list.component';
-import { CompanyItemComponent } from './company-list/company-item/company-item.component';
-import { CompanyDetailComponent } from './company-detail/company-detail.component';
-import { CompanyStartComponent } from './company-start/company-start.component';
 import { SharedModule } from '../shared/shared.module';
-import { CompanyRoutingModule } from './company-routing.module';
+import { JobComponent } from './job.component';
+import { JobListComponent } from './job-list/job-list.component';
+import { JobItemComponent } from './job-list/job-item/job-item.component';
+import { JobDetailComponent } from './job-detail/job-detail.component';
+import { JobStartComponent } from './job-start/job-start.component';
+import { JobRoutingModule } from './job-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    CompanyComponent,
-    CompanyListComponent,
-    CompanyItemComponent,
-    CompanyDetailComponent,
-    CompanyStartComponent
+    JobComponent,
+    JobListComponent,
+    JobItemComponent,
+    JobDetailComponent,
+    JobStartComponent
+
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    CompanyRoutingModule,
+    JobRoutingModule,
     SharedModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -56,4 +57,4 @@ import { CompanyRoutingModule } from './company-routing.module';
     ReactiveFormsModule
   ]}
 )
-export class CompanyModule {}
+export class JobModule {}

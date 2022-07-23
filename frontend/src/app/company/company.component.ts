@@ -7,5 +7,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class CompanyComponent implements OnInit {
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

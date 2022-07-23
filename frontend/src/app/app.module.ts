@@ -27,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core.module';
 import { HomeComponent } from './home/home.component';
+import { JobEffects } from './job/store/job.effects';
 
 @NgModule({
     declarations: [AppComponent,HeaderComponent,HomeComponent],
@@ -47,7 +48,7 @@ import { HomeComponent } from './home/home.component';
         SharedModule,
         StoreModule.forRoot(fromApp.appReducer),
         StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-        EffectsModule.forRoot([AuthEffects, CompanyEffects]),
+        EffectsModule.forRoot([AuthEffects, CompanyEffects, JobEffects]),
         EntityDataModule.forRoot({}),
         StoreRouterConnectingModule.forRoot({
             stateKey: 'router',

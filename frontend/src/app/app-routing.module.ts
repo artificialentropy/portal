@@ -4,9 +4,10 @@ import { HomeComponent } from "./home/home.component";
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/company', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'company', loadChildren: () => import('./company/company.module').then(x => x.CompanyModule)},
+  { path: 'jobs', loadChildren: () => import('./job/job.module').then(x => x.JobModule)},
   { path: 'auth',loadChildren: () => import('./auth/auth.module').then(x => x.AuthModule)},
 ];
 

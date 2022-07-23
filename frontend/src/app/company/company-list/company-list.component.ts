@@ -13,7 +13,6 @@ import { FetchCompanies } from '../store/company.actions';
 export class CompanyListComponent implements OnInit {
 
   companies: Company[] = [];
-  companySub: Subscription;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -21,7 +20,7 @@ export class CompanyListComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('companies').subscribe((result) => {
-      let tempCompanies: Company[] = [];
+      this.companies = [];
       result.companies.forEach(
         (companyItem) => {
           this.companies.push(companyItem)

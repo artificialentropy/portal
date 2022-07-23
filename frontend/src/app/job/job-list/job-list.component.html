@@ -1,1 +1,11 @@
-<p>job-list works!</p>
+
+<div class="row">
+  <div class="col-xs-12">
+    <app-job-item
+      *ngFor="let job of jobs ; let i = index"
+      [job]="job"
+      [index]="i">
+    </app-job-item>
+  </div>
+</div>
+
