@@ -7,6 +7,8 @@ import * as fromApp from '../reducers/index';
 import * as AuthActions from '../auth/action-types';
 import * as CompanyActions from '../company/store/company.actions';
 import * as JobActions from '../job/store/job.actions';
+import * as ProfilesAction from '../profile/store/profile.actions';
+import * as MyProfileAction from '../my-profile/store/my-profile.actions';
 
 @Component({
   selector: 'app-header',
@@ -37,6 +39,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onFetchJobData() {
     this.store.dispatch(new JobActions.FetchJobs());
   }
+  onFetchProfilesData() {
+    this.store.dispatch(new ProfilesAction.FetchProfiles());
+  }
+  // onFetchMyProfileData() {
+  //   this.store.dispatch(new MyProfileAction.FetchMyProfile());
+  // }
   onLogout() {
     this.store.dispatch(new AuthActions.AuthActions.Logout());
   }

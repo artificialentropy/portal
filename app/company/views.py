@@ -33,12 +33,4 @@ class JobApplicationView(ListAPIView):
 class RecruiterPublicListView(ListAPIView):
     queryset = Recruiter.objects.all()
     serializer_class = serializers.RecruiterPublicSerializer
-
-class RecruiterPrivateDetailView(RetrieveAPIView):
-    serializer_class = serializers.RecruiterPrivateSerializer
-    queryset = Recruiter.objects.all()
     permission_classes = (IsAuthenticated,)
-    def get_queryset(self):
-        queryset = self.queryset
-        return queryset
-    

@@ -38,7 +38,6 @@ export class JobEffects {
       });
     }),
     map(jobs => {
-      console.log(jobs);
       return new JobsActions.SetJobs(jobs);
     })
   );

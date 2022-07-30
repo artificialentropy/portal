@@ -14,26 +14,14 @@ class JobApplicationSerializer(serializers.ModelSerializer):
     job_application_company = CompanySerializer(many=False, read_only=True)
     class Meta:
         model = JobApplication
-        fields = (
-            'id','job_application_candidate', 'job_application_company'
-        )
+        fields = "__all__"
 
 class RecruiterPublicSerializer(serializers.ModelSerializer):
     recruiter_profile = ProfilePublicSerializer(many=False, read_only=True)
     recruiter_company = CompanySerializer(many=False, read_only=True)
     class Meta:
         model = Recruiter
-        fields = (
-            'id','recruiter_profile', 'recruiter_company'
-        )
-class RecruiterPrivateSerializer(serializers.ModelSerializer):
-    recruiter_profile = ProfilePrivateSerializer(many=False, read_only=True)
-    recruiter_company = CompanySerializer(many=False, read_only=True)
-    class Meta:
-        model = Recruiter
-        fields = (
-            'id', 'recruiter_profile', 'recruiter_company'
-        )
+        fields = "__all__"
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,14 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-
-import {MatListModule} from '@angular/material/list';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
@@ -17,7 +10,6 @@ import {environment} from '../environments/environment';
 import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
 import * as fromApp from './reducers/index';
 import {EffectsModule} from '@ngrx/effects';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {EntityDataModule} from '@ngrx/data';
 import { CompanyEffects } from './company/store/company.effects';
 import { AuthEffects } from './auth/auth.effects';
@@ -28,27 +20,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core.module';
 import { HomeComponent } from './home/home.component';
 import { JobEffects } from './job/store/job.effects';
+import { ProfilesEffects } from './profile/store/profile.effects';
+import { CommonModule } from '@angular/common';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyProfileEffects } from './my-profile/store/my-profile.effects';
 
 @NgModule({
-    declarations: [AppComponent,HeaderComponent,HomeComponent],
+    declarations: [AppComponent,HeaderComponent,HomeComponent,MyProfileComponent],
     imports: [
         BrowserModule,
+        CommonModule,
         FormsModule,
         RouterModule,
         AppRoutingModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        MatMenuModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatProgressSpinnerModule,
-        MatListModule,
-        MatToolbarModule,
         SharedModule,
         StoreModule.forRoot(fromApp.appReducer),
         StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-        EffectsModule.forRoot([AuthEffects, CompanyEffects, JobEffects]),
+        EffectsModule.forRoot([AuthEffects, CompanyEffects, JobEffects, ProfilesEffects, MyProfileEffects]),
         EntityDataModule.forRoot({}),
         StoreRouterConnectingModule.forRoot({
             stateKey: 'router',

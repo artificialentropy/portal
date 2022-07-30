@@ -3,18 +3,17 @@ from user_auth.serializers import UserSerializer
 from rest_framework import serializers
 
 class ProfilePrivateSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(read_only=True, default=UserSerializer)
+    user = UserSerializer(many=False, read_only=True)
     class Meta:
         model = Profile
-        fields = ("id","user","first_name","last_name","phone_number","city","avatar")
-        read_only_fields = ('id','user','slug')
+        fields = "__all__"
 
 class ProfilePublicSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ("id","user","first_name","last_name","city","avatar")
-        read_only_fields = ("id","user","first_name","last_name","city","avatar")
+        fields = ("id","first_name","last_name","city","avatar")
+        read_only_fields = ("id","first_name","last_name","city","avatar")
 
 class ProfileUpdateSerialier(serializers.ModelSerializer):
 
